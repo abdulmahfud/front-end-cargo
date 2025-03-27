@@ -10,7 +10,7 @@ import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 import Link from "next/link";
-
+import CheckShippingCost from "@/components/CheckShippingCost/CheckShippingCost";
 import {
   ArrowRight,
   MessageCircle,
@@ -38,7 +38,7 @@ const partnerLogos = [
   "/image/tiki.png",
 ];
 
-export default function Home() {
+export default function ShippingCost() {
   // Handle smooth scroll for hash links
   useEffect(() => {
     const handleHashLinkClick = () => {
@@ -62,8 +62,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <Hero />
-      <Features />
+      <CheckShippingCost />
 
       {/* Partner section */}
       <section className="section-padding bg-white py-8">
@@ -108,77 +107,6 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-
-      {/* Why choose us section */}
-      <section id="about" className="section-padding bg-gray-50 py-10">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <AnimatedSection>
-              <Image
-                src="/image/gudang.png"
-                alt="Team working together"
-                width={500}
-                height={500}
-                className="w-full h-auto object-cover rounded-2xl shadow-lg"
-              />
-            </AnimatedSection>
-
-            <AnimatedSection delay={200}>
-              <div>
-                <span className="inline-block px-4 py-1 bg-blue-100 text-blue-500 rounded-full text-sm font-semibold mb-4">
-                  Mengapa Memilih Kami
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                  Lebih dari Sekadar Layanan Pengiriman
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  Kami bangga menjadi solusi logistik yang tidak hanya
-                  mengirimkan paket, tetapi juga memberikan pengalaman terbaik
-                  untuk setiap pelanggan.
-                </p>
-
-                <div className="space-y-6">
-                  {[
-                    {
-                      icon: <Star className="w-5 h-5" />,
-                      title: "Kualitas Layanan Premium",
-                      desc: "Konsistensi dan keandalan dalam setiap pengiriman",
-                    },
-                    {
-                      icon: <TrendingUp className="w-5 h-5" />,
-                      title: "Pertumbuhan Berkelanjutan",
-                      desc: "Inovasi terus-menerus untuk meningkatkan layanan",
-                    },
-                    {
-                      icon: <Shield className="w-5 h-5" />,
-                      title: "Keamanan Terjamin",
-                      desc: "Sistem keamanan yang menjaga kerahasiaan data Anda",
-                    },
-                    {
-                      icon: <Users className="w-5 h-5" />,
-                      title: "Dukungan Pelanggan 24/7",
-                      desc: "Tim siap membantu Anda kapan saja dibutuhkan",
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="flex">
-                      <div className="flex-shrink-0 mt-1 mr-4 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-800">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
       {/* CTA section */}
       <section
         id="contact"
@@ -226,9 +154,7 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-
       <FloatingWhatsApp />
-
       <Footer />
     </div>
   );

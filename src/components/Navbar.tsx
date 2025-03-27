@@ -1,9 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
-import { Menu, X, CircleCheckBig  } from "lucide-react";
+import { Menu, X, CircleCheckBig } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,41 +25,44 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: "Beranda", href: "#" },
-    { name: "Fitur", href: "#features" },
-    { name: "Cek Ongkir", href: "#pricing" },
-    { name: "Cek Resi", href: "#pricing" },
-    { name: "Tentang Kami", href: "#about" },
-    { name: "Kontak", href: "#contact" },
+    { name: "Beranda", href: "/" },
+    { name: "Fitur", href: "/#features" },
+    { name: "Cek Ongkir", href: "/cek-ongkir" },
+    { name: "Cek Resi", href: "/#pricing" },
+    { name: "Tentang Kami", href: "/#about" },
+    { name: "Kontak", href: "/#contact" },
   ];
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "glass-morph bg-blue-50 py-3 shadow-sm"
-          : "bg-transparent py-5"
+        isScrolled ? "glass-morph bg-blue-50 py-3 shadow-sm" : "bg-transparent"
       )}
     >
-      <div className="container px-4 py-4 mx-auto flex items-center justify-between">
+      <div className="container px-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <a href="#" className="mr-8">
-            <div className="font-bold text-2xl text-blue-600">
-              Global Logistic
+          <Link href="/" className="mr-8">
+            <div>
+              <Image
+                src="/image/bisakirim.png"
+                alt="Logo"
+                width={100}
+                height={100}
+              />
             </div>
-          </a>
+          </Link>
         </div>
         <div>
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-gray-700 hover:text-blue-500 font-medium transition-colors duration-200"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
@@ -74,11 +79,7 @@ const Navbar: React.FC = () => {
             <motion.div
               className="absolute top-0 button-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-blue-500 to-transparent rotate-30"
               animate={{ left: "100%" }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
             />
           </Button>
         </div>
@@ -100,14 +101,14 @@ const Navbar: React.FC = () => {
       >
         <div className="container mx-auto py-5 px-4 flex flex-col space-y-4">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="text-gray-700 hover:text-blue-500 py-2 font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="flex flex-col space-y-3 pt-3">
             <Button variant="outline" className="border-blue-500">
