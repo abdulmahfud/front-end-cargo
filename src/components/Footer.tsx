@@ -9,6 +9,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import Image from 'next/image';
 
 const Footer: React.FC = () => {
   return (
@@ -16,9 +17,12 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <div className="font-bold text-2xl text-blue-500 mb-4">
-              Global Logistic
-            </div>
+            <Image
+              src="/image/bisakirim.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
             <p className="text-gray-600 mb-6">
               Layanan pengiriman terpercaya untuk kebutuhan personal dan bisnis
               Anda. Kami membantu Anda mengirim paket dengan mudah, cepat, dan

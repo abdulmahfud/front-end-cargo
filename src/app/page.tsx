@@ -199,7 +199,7 @@ export default function Home() {
                 seluruh Indonesia.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[34px] flex items-center justify-center gap-2">
+                <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
                   <ArrowRight />
                   Mulai Kirim
                   <motion.div
@@ -215,7 +215,7 @@ export default function Home() {
                 <Link href="https://wa.me/6285854431808" passHref>
                   <Button
                     variant="outline"
-                    className="text-blue-500 border-white rounded-full"
+                    className="text-blue-500 border-white rounded-full min-h-[54px]"
                   >
                     <MessageCircle />
                     Hubungi Kami

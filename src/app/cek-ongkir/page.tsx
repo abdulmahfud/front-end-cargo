@@ -3,9 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
-import Features from "@/components/Features";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/FloatingWhatsapp";
@@ -14,10 +12,6 @@ import CheckShippingCost from "@/components/CheckShippingCost/CheckShippingCost"
 import {
   ArrowRight,
   MessageCircle,
-  Shield,
-  Star,
-  TrendingUp,
-  Users,
 } from "lucide-react";
 import Image from "next/image";
 

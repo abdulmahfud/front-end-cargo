@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "glass-morph bg-blue-50 py-3 shadow-sm" : "bg-transparent"
+        isScrolled ? "glass-morph bg-blue-50 shadow-sm" : "bg-transparent"
       )}
     >
       <div className="container px-4 mx-auto flex items-center justify-between">
@@ -66,14 +66,13 @@ const Navbar: React.FC = () => {
             ))}
           </nav>
         </div>
-        <div className="hidden md:flex md:pr-40 items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           <Button
-            variant="outline"
-            className="rounded-2xl text-blue-500 border-blue-500"
+            className="rounded-2xl text-lg text-blue-500 border-blue-500 border-none bg-white shadow-none"
           >
             Masuk
           </Button>
-          <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[44px] flex items-center justify-center gap-2">
+          <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
             <CircleCheckBig />
             Coba Sekarang
             <motion.div

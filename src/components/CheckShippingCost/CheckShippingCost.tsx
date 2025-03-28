@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -22,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 
 export default function CekOngkir() {
-  const [faqOpen, setFaqOpen] = useState(null);
 
   const faqs = [
     {
