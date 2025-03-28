@@ -248,7 +248,7 @@ export default function CekOngkir() {
 
         {/* Tombol Cek Ongkir */}
         <div className="mt-4 flex justify-end">
-          <Button className="bg-blue-600 text-white flex items-center gap-2">
+          <Button className="bg-blue-600 text-white flex rounded-full min-h-[54px] items-center gap-2">
             <Search size={16} /> Cek Ongkir
           </Button>
         </div>

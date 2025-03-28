@@ -137,7 +137,7 @@ export default function ShippingCost() {
                 <Link href="https://wa.me/6285854431808" passHref>
                   <Button
                     variant="outline"
-                    className="text-blue-500 border-white rounded-full min-h-[54px]"
+                    className="text-blue-500 w-full border-white rounded-full min-h-[54px]"
                   >
                     <MessageCircle />
                     Hubungi Kami
