@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
-import { Menu, X, CircleCheckBig  } from "lucide-react";
+import { Menu, X, CircleCheckBig } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,75 +25,68 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: "Beranda", href: "#" },
-    { name: "Fitur", href: "#features" },
-    { name: "Cek Ongkir", href: "#pricing" },
-    { name: "Cek Resi", href: "#pricing" },
-    { name: "Tentang Kami", href: "#about" },
-    { name: "Kontak", href: "#contact" },
+    { name: "Beranda", href: "/" },
+    { name: "Fitur", href: "/#features" },
+    { name: "Cek Ongkir", href: "/cek-ongkir" },
+    { name: "Cek Resi", href: "/#pricing" },
+    { name: "Tentang Kami", href: "/#about" },
+    { name: "Kontak", href: "/#contact" },
   ];
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "glass-morph bg-blue-50 py-3 shadow-sm"
-          : "bg-transparent py-5"
+        isScrolled ? "glass-morph bg-blue-50 shadow-sm" : "bg-transparent"
       )}
     >
-      <div className="container px-4 py-4 mx-auto flex items-center justify-between">
-        <div className="flex items-center">
-          <a href="#" className="mr-8">
-            <div className="relative w-[160px] h-[40px]"> {/* Ukuran bisa disesuaikan */}
-              <Image
-                src="/images/BhisaKirim_3.png"
-                alt="Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </a>
-        </div>
+      <div className="container flex items-center justify-between px-4 mx-auto">
+      <div className="flex items-center">
+        <a href="#" className="mr-8">
+          <div className="relative w-[160px] h-[40px]"> {/* Ukuran bisa disesuaikan */}
+            <Image
+              src="/images/BhisaKirim_3.png"
+              alt="Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </a>
+      </div>
         <div>
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="items-center hidden space-x-6 md:flex">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-blue-500 font-medium transition-colors duration-200"
+                className="font-medium text-gray-700 transition-colors duration-200 hover:text-blue-500"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
-        <div className="hidden md:flex md:pr-40 items-center space-x-4">
+        <div className="items-center hidden space-x-4 md:flex">
           <Button
-            variant="outline"
-            className="rounded-2xl text-blue-500 border-blue-500"
+            className="text-lg text-blue-500 bg-white border-blue-500 border-none shadow-none rounded-2xl"
           >
             Masuk
           </Button>
-          <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[44px] flex items-center justify-center gap-2">
+          <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
             <CircleCheckBig />
             Coba Sekarang
             <motion.div
               className="absolute top-0 button-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-blue-500 to-transparent rotate-30"
               animate={{ left: "100%" }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
             />
           </Button>
         </div>
 
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-gray-700"
+          className="text-gray-700 md:hidden"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -105,22 +99,22 @@ const Navbar: React.FC = () => {
           isMenuOpen ? "top-[60px] opacity-100" : "-top-[450px] opacity-0"
         )}
       >
-        <div className="container mx-auto py-5 px-4 flex flex-col space-y-4">
+        <div className="container flex flex-col px-4 py-5 mx-auto space-y-4">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
-              className="text-gray-700 hover:text-blue-500 py-2 font-medium"
+              className="py-2 font-medium text-gray-700 hover:text-blue-500"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <div className="flex flex-col space-y-3 pt-3">
+          <div className="flex flex-col pt-3 space-y-3">
             <Button variant="outline" className="border-blue-500">
               Masuk
             </Button>
-            <Button className="bg-blue-500 text-white hover:bg-blue-600 hover:text-white">
+            <Button className="text-white bg-blue-500 hover:bg-blue-600 hover:text-white">
               Daftar
             </Button>
           </div>
