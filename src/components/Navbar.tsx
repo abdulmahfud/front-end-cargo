@@ -4,6 +4,7 @@ import { cn } from "../lib/utils";
 import { Menu, X, CircleCheckBig  } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
+import Image from 'next/image';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,8 +44,14 @@ const Navbar: React.FC = () => {
       <div className="container px-4 py-4 mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <a href="#" className="mr-8">
-            <div className="font-bold text-2xl text-blue-600">
-              Global Logistic
+            <div className="relative w-[160px] h-[40px]"> {/* Ukuran bisa disesuaikan */}
+              <Image
+                src="/images/BhisaKirim_3.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </a>
         </div>

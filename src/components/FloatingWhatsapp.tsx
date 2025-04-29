@@ -17,7 +17,7 @@ const FloatingWhatsApp = () => {
       whileTap={{ scale: 0.9 }}
     >
       <Image
-        src="/image/whatsapp.png"
+        src="/images/whatsapp.png"
         alt="WhatsApp"
         width={60}
         height={60}

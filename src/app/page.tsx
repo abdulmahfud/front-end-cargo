@@ -22,20 +22,20 @@ import {
 import Image from "next/image";
 
 const partnerLogos = [
-  "/image/lion.png",
-  "/image/borzo.png",
-  "/image/central-cargo.png",
-  "/image/id-express.png",
-  "/image/JTCargo.png",
-  "/image/lion.png",
-  "/image/ncs.png",
-  "/image/ninja.png",
-  "/image/paxel.png",
-  "/image/pos.png",
-  "/image/rpx.png",
-  "/image/sap.png",
-  "/image/sicepat.png",
-  "/image/tiki.png",
+  "/images/lion.png",
+  "/images/borzo.png",
+  "/images/central-cargo.png",
+  "/images/id-express.png",
+  "/images/JTCargo.png",
+  "/images/lion.png",
+  "/images/ncs.png",
+  "/images/ninja.png",
+  "/images/paxel.png",
+  "/images/pos.png",
+  "/images/rpx.png",
+  "/images/sap.png",
+  "/images/sicepat.png",
+  "/images/tiki.png",
 ];
 
 export default function Home() {
@@ -115,7 +115,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
               <Image
-                src="/image/gudang.png"
+                src="/images/gudang.png"
                 alt="Team working together"
                 width={500}
                 height={500}
@@ -183,7 +183,7 @@ export default function Home() {
       <section
         id="contact"
         className="py-20 relative overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/image/bg1.jpeg')" }}
+        style={{ backgroundImage: "url('/images/bg1.jpeg')" }}
       >
         {/* Overlay Hitam Pekat */}
         <div className="absolute inset-0 bg-black/50 z-0"></div>

@@ -8,37 +8,37 @@ import Image from "next/image";
 const Features: React.FC = () => {
   const features = [
     {
-      image: "/image/distribution.png",
+      image: "/images/distribution.png",
       title: "Pickup Gratis Semua Ekspedisi",
       description:
         "Pesanan paket kamu otomatis di-pickup oleh kurir dan GRATIS tanpa biaya pickup.",
     },
     {
-      image: "/image/sticker.png",
+      image: "/images/sticker.png",
       title: "Cashback Sampai 50% Ongkir",
       description:
         "Khusus untuk kamu! Dapatkan langsung cashback sampai dengan 50% ongkir di tiap pengirimannya.",
     },
     {
-      image: "/image/delivery.png",
+      image: "/images/delivery.png",
       title: "Dana COD Otomatis Langsung Cair",
       description:
         "Demi cashflow yang lancar, dana COD akan langsung dan otomatis cair setelah paket sukses terkirim.",
     },
     {
-      image: "/image/handle-with-care.png",
+      image: "/images/handle-with-care.png",
       title: "Gratis Biaya Ongkir Paket Retur",
       description:
         "Meskipun kami terus berusaha maksimal agar paket kamu tidak retur, biaya ongkir retur tetap akan kami gratiskan.",
     },
     {
-      image: "/image/recommendation.png",
+      image: "/images/recommendation.png",
       title: "Pilihan Kurir Terbaik Ongkir Termurah",
       description:
         "Rekomendasi dari AI untuk kurir ekspedisi terbaik khusus pesanan kirim paket kamu agar minim retur.",
     },
     {
-      image: "/image/technical-support.png",
+      image: "/images/technical-support.png",
       title: "Best Partner Support",
       description:
         "24 Jam NON-STOP melayani semua pertanyaan seputar kiriman paket kamu dengan setulus hati.",
