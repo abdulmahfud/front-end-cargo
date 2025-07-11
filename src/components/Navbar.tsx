@@ -68,20 +68,29 @@ const Navbar: React.FC = () => {
           </nav>
         </div>
         <div className="items-center hidden space-x-4 md:flex">
-          <Button
-            className="text-lg text-blue-500 bg-white border-blue-500 border-none shadow-none rounded-2xl"
-          >
-            Masuk
-          </Button>
-          <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
-            <CircleCheckBig />
-            Coba Sekarang
-            <motion.div
-              className="absolute top-0 button-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-blue-500 to-transparent rotate-30"
-              animate={{ left: "100%" }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            />
-          </Button>
+          <div className="flex items-center gap-4 mt-3">
+            {/* Masuk Button */}
+            <Link href="https://panel.bhisakirim.com/" passHref>
+              <Button className="mt-1 text-lg text-blue-500 bg-white border border-blue-500 rounded-2xl px-5 py-2 hover:bg-blue-50 hover:shadow-lg transition-all duration-300">
+                Masuk
+              </Button>
+            </Link>
+
+            {/* Coba Sekarang Button */}
+            <Link href="https://panel.bhisakirim.com/" passHref>
+              <Button className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform duration-300">
+                <CircleCheckBig />
+                Coba Sekarang
+
+                {/* Shimmer Animation */}
+                <motion.div
+                  className="absolute top-0 left-[-100%] w-[200%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12"
+                  animate={{ left: "100%" }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                />
+              </Button>
+            </Link>
+          </div>
         </div>
 
         <button
