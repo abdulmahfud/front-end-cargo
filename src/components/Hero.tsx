@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
           <AnimatedSection className="order-2 md:order-1">
             <div className="max-w-xl">
               <span className="inline-block px-4 py-1 bg-blue-50 text-blue-500 rounded-full text-sm font-semibold mb-4">
-                #BisaKirim
+                #BhisaKirim
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight text-balance">
                 Layanan Pengiriman yang{" "}
