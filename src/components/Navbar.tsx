@@ -27,8 +27,8 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { name: "Beranda", href: "/" },
     { name: "Fitur", href: "/#features" },
-    { name: "Cek Ongkir", href: "/cek-ongkir" },
-    { name: "Cek Resi", href: "/#pricing" },
+    // { name: "Cek Ongkir", href: "/cek-ongkir" },
+    // { name: "Cek Resi", href: "/#pricing" },
     { name: "Tentang Kami", href: "/#about" },
     { name: "Kontak", href: "/#contact" },
   ];

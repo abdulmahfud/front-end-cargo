@@ -94,7 +94,7 @@ export default function CekOngkir() {
         </div>
         <div className="md:w-1/2 flex justify-center">
           <Image
-            src="/image/jasa-pengiriman.jpg"
+            src="/images/jasa-pengiriman.jpg"
             alt="Cek Ongkir"
             width={500}
             height={300}

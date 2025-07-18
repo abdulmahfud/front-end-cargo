@@ -199,20 +199,22 @@ export default function Home() {
                 seluruh Indonesia.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
-                  <ArrowRight />
-                  Mulai Kirim
-                  <motion.div
-                    className="absolute top-0 button-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-white to-transparent rotate-30"
-                    animate={{ left: "100%" }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                </Button>
-                <Link href="https://wa.me/6285854431808" passHref>
+                <Link href="https://panel.bhisakirim.com/" target="_blank">
+                  <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
+                    <ArrowRight />
+                    Mulai Kirim
+                    <motion.div
+                      className="absolute top-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-white to-transparent rotate-30"
+                      animate={{ left: "100%" }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                  </Button>
+                </Link>
+                <Link href="https://wa.me/6281330323559" passHref>
                   <Button
                     variant="outline"
                     className="text-blue-500 border-white rounded-full min-h-[54px]"

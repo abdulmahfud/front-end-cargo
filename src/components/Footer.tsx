@@ -18,12 +18,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Image
-              src="/image/bisakirim.png"
+              src="/images/BhisaKirim_3.png"
               alt="Logo"
-              width={100}
-              height={100}
+              width={150}
+              height={150}
             />
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 mb-6 mt-4">
               Layanan pengiriman terpercaya untuk kebutuhan personal dan bisnis
               Anda. Kami membantu Anda mengirim paket dengan mudah, cepat, dan
               aman.
@@ -161,16 +161,16 @@ const Footer: React.FC = () => {
                   className="text-blue-500 mr-3 mt-1 flex-shrink-0"
                 />
                 <span className="text-gray-600">
-                  Jl. Hj Ismail No. 10, Jakarta Selatan
+                Jl. Jepara Bangsri KM 7 Wonorejo Kec.Jepara Kab.Jepara
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={20} className="text-blue-500 mr-3 flex-shrink-0" />
-                <span className="text-gray-600">085854431807</span>
+                <span className="text-gray-600">081330323559</span>
               </li>
               <li className="flex items-center">
                 <Mail size={20} className="text-blue-500 mr-3 flex-shrink-0" />
-                <span className="text-gray-600">hello@globallogistic.com</span>
+                <span className="text-gray-600">support@bisakirim.com</span>
               </li>
             </ul>
           </div>
@@ -178,7 +178,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-gray-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-600 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} GlobalLogistic. All rights
+            &copy; {new Date().getFullYear()} BhisaKirim. All rights
             reserved.
           </p>
           <div className="flex space-x-6">

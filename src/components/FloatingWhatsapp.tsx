@@ -6,10 +6,10 @@ import Image from "next/image";
 const FloatingWhatsApp = () => {
   return (
     <motion.a
-      href="https://wa.me/6281221555105" 
+      href="https://wa.me/6281330323559" 
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 shadow-lg"
+      className="fixed bottom-6 right-6"
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}

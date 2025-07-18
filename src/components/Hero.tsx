@@ -1,9 +1,9 @@
-
-import React from 'react';
-import { ArrowRight, Package, Truck, Clock } from 'lucide-react';
+import React from "react";
+import { ArrowRight, Package, Truck, Clock } from "lucide-react";
 import { Button } from "../components/ui/button";
-import AnimatedSection from './AnimatedSection';
+import AnimatedSection from "./AnimatedSection";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Hero: React.FC = () => {
   return (
@@ -43,12 +43,14 @@ const Hero: React.FC = () => {
                     />
                   </Button>
                 </div>
-                <Button
-                  variant="outline"
-                  className="min-h-[54px] rounded-full text-lg border-blue-500 text-blue-500 hover:text-white hover:bg-blue-500"
-                >
-                  Lihat Layanan
-                </Button>
+                <a href="#features">
+                  <Button
+                    variant="outline"
+                    className="min-h-[54px] rounded-full text-lg border-blue-500 text-blue-500 hover:text-white hover:bg-blue-500"
+                  >
+                    Lihat Layanan
+                  </Button>
+                </a>
               </div>
 
               <div className="mt-12 grid grid-cols-3 gap-4">
@@ -81,6 +83,16 @@ const Hero: React.FC = () => {
           </AnimatedSection>
 
           <AnimatedSection className="order-1 md:order-2" delay={200}>
+            <Image
+              src="/images/gudang.png"
+              alt="Team working together"
+              width={500}
+              height={500}
+              className="w-full h-auto object-cover rounded-2xl shadow-lg"
+            />
+          </AnimatedSection>
+
+          {/* <AnimatedSection className="order-1 md:order-2" delay={200}>
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 w-full max-w-md mx-auto">
                 <h3 className="text-xl font-bold mb-6 text-center">
@@ -120,15 +132,13 @@ const Hero: React.FC = () => {
                   <Button variant="outline" className='hover:bg-blue-800 hover:text-white w-full text-xl rounded-full bg-blue-500 text-white min-h-[54px]'>Cek Tarif</Button>
                 </div>
               </div>
-
-              {/* Decorative elements */}
               <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-yellow-100 rounded-lg -z-10 animate-gentle-float" />
               <div
                 className="absolute -top-6 -right-6 w-16 h-16 bg-blue-200 rounded-lg -z-10 animate-gentle-float"
                 style={{ animationDelay: "1s" }}
               />
             </div>
-          </AnimatedSection>
+          </AnimatedSection> */}
         </div>
       </div>
     </div>
