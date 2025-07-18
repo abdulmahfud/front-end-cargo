@@ -29,19 +29,25 @@ const Hero: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="relative">
-                  <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-2xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
-                    <ArrowRight />
-                    Mulai Kirim
-                    <motion.div
-                      className="absolute top-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-30"
-                      animate={{ left: "100%" }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                    />
-                  </Button>
+                  <a
+                    href="https://panel.bhisakirim.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="hover:bg-blue-800 relative overflow-hidden bg-blue-500 text-white rounded-full text-2xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2">
+                      <ArrowRight />
+                      Mulai Kirim
+                      <motion.div
+                        className="absolute top-0 left-[-150%] h-full w-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-30"
+                        animate={{ left: "100%" }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+                    </Button>
+                  </a>
                 </div>
                 <a href="#features">
                   <Button
