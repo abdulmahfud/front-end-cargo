@@ -41,19 +41,21 @@ const Navbar: React.FC = () => {
       )}
     >
       <div className="container flex items-center justify-between px-4 mx-auto">
-      <div className="flex items-center">
-        <a href="#" className="mr-8">
-          <div className="relative w-[160px] h-[40px]"> {/* Ukuran bisa disesuaikan */}
-            <Image
-              src="/images/BhisaKirim_3.png"
-              alt="Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-        </a>
-      </div>
+        <div className="flex items-center">
+          <a href="#" className="mr-8">
+            <div className="relative w-[160px] h-[40px]">
+              {" "}
+              {/* Ukuran bisa disesuaikan */}
+              <Image
+                src="/images/BhisaKirim_3.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </a>
+        </div>
         <div>
           <nav className="items-center hidden space-x-6 md:flex">
             {navLinks.map((link) => (
@@ -70,18 +72,24 @@ const Navbar: React.FC = () => {
         <div className="items-center hidden space-x-4 md:flex">
           <div className="flex items-center gap-4 mt-3">
             {/* Masuk Button */}
-            <Link href="https://panel.bhisakirim.com/" passHref>
-              <Button className="mt-1 text-lg text-blue-500 bg-white border border-blue-500 rounded-2xl px-5 py-2 hover:bg-blue-50 hover:shadow-lg transition-all duration-300">
-                Masuk
-              </Button>
-            </Link>
+            <a
+              href="https://panel.bhisakirim.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 text-lg text-blue-500 bg-white border border-blue-500 rounded-2xl px-5 py-2 hover:bg-blue-50 hover:shadow-lg transition-all duration-300"
+            >
+              Masuk
+            </a>
 
             {/* Coba Sekarang Button */}
-            <Link href="https://panel.bhisakirim.com/" passHref>
+            <a
+              href="https://panel.bhisakirim.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button className="relative overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-full text-xl px-6 py-3 min-h-[54px] flex items-center justify-center gap-2 shadow-lg hover:scale-105 transition-transform duration-300">
                 <CircleCheckBig />
                 Coba Sekarang
-
                 {/* Shimmer Animation */}
                 <motion.div
                   className="absolute top-0 left-[-100%] w-[200%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12"
@@ -89,7 +97,7 @@ const Navbar: React.FC = () => {
                   transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                 />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -120,12 +128,24 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
           <div className="flex flex-col pt-3 space-y-3">
-            <Button variant="outline" className="border-blue-500">
-              Masuk
-            </Button>
-            <Button className="text-white bg-blue-500 hover:bg-blue-600 hover:text-white">
-              Daftar
-            </Button>
+            <a
+              href="https://panel.bhisakirim.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" className="border-blue-500">
+                Masuk
+              </Button>
+            </a>
+            <a
+              href="https://panel.bhisakirim.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="text-white bg-blue-500 hover:bg-blue-600 hover:text-white">
+                Daftar
+              </Button>
+            </a>
           </div>
         </div>
       </div>
