@@ -6,6 +6,8 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import HeroStats from "@/components/HeroStats";
+import QuickCheckCards from "@/components/QuickCheckCards";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/FloatingWhatsapp";
@@ -21,11 +23,14 @@ import {
 import Image from "next/image";
 
 const partnerLogos = [
+  "/images/anter-aja.png",
+  "/images/jne.png",
+  "/images/pos-indonesia.png",
   "/images/lion.png",
   "/images/borzo.png",
   "/images/central-cargo.png",
   "/images/id-express.png",
-  "/images/JTCargo.png",
+  "/images/jnt-cargo.png",
   "/images/lion.png",
   "/images/ncs.png",
   "/images/ninja.png",
@@ -62,6 +67,8 @@ export default function Home() {
     <div className="min-h-screen">
       <Navbar />
       <Hero />
+      <HeroStats />
+      <QuickCheckCards />
       <Features />
 
       {/* Partner section */}
@@ -69,15 +76,14 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="text-center mt-5 max-w-3xl mx-auto mb-12">
-              <span className="inline-block px-4 py-1 bg-yellow-50 text-yellow-500 rounded-full text-sm font-semibold mb-4">
-                Partner Tepercaya
-              </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                Didukung oleh Partner Logistik Terbaik
+                Partner Logistik Terbaik dalam Satu Platform
               </h2>
               <p className="text-lg text-gray-600">
-                Kami berkolaborasi dengan berbagai partner logistik terkemuka
-                untuk memberikan layanan pengiriman terbaik.
+                Nikmati kemudahan mengirim paket melalui berbagai ekspedisi
+                terpercaya. Semua terintegrasi dalam satu platform untuk
+                memberikan pengalaman pengiriman yang lebih praktis dan
+                efisien.
               </p>
             </div>
           </AnimatedSection>
@@ -113,65 +119,60 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
-              <Image
-                src="/images/gudang.png"
-                alt="Team working together"
-                width={500}
-                height={500}
-                className="w-full h-auto object-cover rounded-2xl shadow-lg"
-              />
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                  Lebih dari Sekadar
+                  <br />
+                  Mengirim Paket
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Bhisakirim membantu Anda menghemat waktu dan
+                  menyederhanakan proses pengiriman. Dengan akses ke berbagai
+                  ekspedisi terpercaya, Anda dapat memilih layanan terbaik
+                  sesuai kebutuhan tanpa berpindah aplikasi.
+                </p>
+              </div>
             </AnimatedSection>
 
             <AnimatedSection delay={200}>
-              <div>
-                <span className="inline-block px-4 py-1 bg-blue-100 text-blue-500 rounded-full text-sm font-semibold mb-4">
-                  Mengapa Memilih Kami
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                  Lebih dari Sekadar Layanan Pengiriman
-                </h2>
-                <p className="text-lg text-gray-600 mb-8">
-                  Kami bangga menjadi solusi logistik yang tidak hanya
-                  mengirimkan paket, tetapi juga memberikan pengalaman terbaik
-                  untuk setiap pelanggan.
-                </p>
-
-                <div className="space-y-6">
-                  {[
-                    {
-                      icon: <Star className="w-5 h-5" />,
-                      title: "Kualitas Layanan Premium",
-                      desc: "Konsistensi dan keandalan dalam setiap pengiriman",
-                    },
-                    {
-                      icon: <TrendingUp className="w-5 h-5" />,
-                      title: "Pertumbuhan Berkelanjutan",
-                      desc: "Inovasi terus-menerus untuk meningkatkan layanan",
-                    },
-                    {
-                      icon: <Shield className="w-5 h-5" />,
-                      title: "Keamanan Terjamin",
-                      desc: "Sistem keamanan yang menjaga kerahasiaan data Anda",
-                    },
-                    {
-                      icon: <Users className="w-5 h-5" />,
-                      title: "Dukungan Pelanggan 24/7",
-                      desc: "Tim siap membantu Anda kapan saja dibutuhkan",
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="flex">
-                      <div className="flex-shrink-0 mt-1 mr-4 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-800">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">{item.desc}</p>
-                      </div>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: <Star className="w-6 h-6" />,
+                    title: "Kualitas Layanan",
+                    desc: "Kami menghadirkan layanan yang mudah digunakan, didukung oleh partner logistik terpercaya untuk memastikan setiap pengiriman berjalan dengan baik.",
+                  },
+                  {
+                    icon: <TrendingUp className="w-6 h-6" />,
+                    title: "Terus Berinovasi",
+                    desc: "Kami terus mengembangkan fitur dan layanan agar proses pengiriman menjadi lebih mudah, cepat, dan efisien.",
+                  },
+                  {
+                    icon: <Shield className="w-6 h-6" />,
+                    title: "Keamanan Terjamin",
+                    desc: "Data dan transaksi Anda terlindungi dengan sistem keamanan yang andal sehingga Anda dapat bertransaksi dengan tenang.",
+                  },
+                  {
+                    icon: <Users className="w-6 h-6" />,
+                    title: "Dukungan Pelanggan",
+                    desc: "Tim Customer Support kami siap membantu Anda dengan cepat jika memiliki pertanyaan atau membutuhkan bantuan selama proses pengiriman.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-5 bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
+                  >
+                    <div className="flex-shrink-0 h-14 w-14 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
+                      {item.icon}
                     </div>
-                  ))}
-                </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-600">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </AnimatedSection>
           </div>

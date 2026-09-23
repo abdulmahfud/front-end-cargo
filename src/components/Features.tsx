@@ -3,45 +3,74 @@
 import React from "react";
 import AnimatedSection from "./AnimatedSection";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import {
+  Award,
+  Truck,
+  TrendingUp,
+  Settings,
+  Rocket,
+  Monitor,
+  Handshake,
+  ShieldCheck,
+} from "lucide-react";
 
 const Features: React.FC = () => {
   const features = [
     {
-      image: "/images/distribution.png",
-      title: "Pickup Gratis Semua Ekspedisi",
+      icon: <Award size={28} />,
+      iconBg: "bg-amber-100 text-amber-500",
+      title: "Kirim Lebih Mudah, Lebih Cepat, dan Lebih Hemat.",
       description:
-        "Pesanan paket kamu otomatis di-pickup oleh kurir dan GRATIS tanpa biaya pickup.",
+        "Tidak perlu membuka banyak aplikasi ekspedisi. Dengan Bhisakirim, Anda dapat membandingkan ongkir, membuat pengiriman, melacak paket, hingga mengelola seluruh transaksi dalam satu platform yang praktis dan efisien.",
     },
     {
-      image: "/images/sticker.png",
-      title: "Cashback Sampai 50% Ongkir",
+      icon: <Truck size={28} />,
+      iconBg: "bg-blue-100 text-blue-500",
+      title: "Kirim Paket Jadi Lebih Mudah",
       description:
-        "Khusus untuk kamu! Dapatkan langsung cashback sampai dengan 50% ongkir di tiap pengirimannya.",
+        "Tak perlu berpindah aplikasi untuk mengelola pengiriman. Dengan Bhisakirim, Anda dapat memilih berbagai ekspedisi, memantau status paket, mengelola COD, hingga mengintegrasikan toko online dalam satu dashboard.",
     },
     {
-      image: "/images/delivery.png",
-      title: "Dana COD Otomatis Langsung Cair",
+      icon: <TrendingUp size={28} />,
+      iconBg: "bg-purple-100 text-purple-500",
+      title: "Solusi Pengiriman untuk Bisnis yang Terus Bertumbuh",
       description:
-        "Demi cashflow yang lancar, dana COD akan langsung dan otomatis cair setelah paket sukses terkirim.",
+        "Mulai dari satu paket hingga ribuan pengiriman setiap hari, Bhisakirim membantu Anda mengelola seluruh proses pengiriman dengan lebih cepat, praktis, dan efisien.",
     },
     {
-      image: "/images/handle-with-care.png",
-      title: "Gratis Biaya Ongkir Paket Retur",
+      icon: <Settings size={28} />,
+      iconBg: "bg-blue-100 text-blue-500",
+      title: "Kelola Pengiriman Tanpa Batas",
       description:
-        "Meskipun kami terus berusaha maksimal agar paket kamu tidak retur, biaya ongkir retur tetap akan kami gratiskan.",
+        "Sederhanakan proses logistik bisnis Anda dengan akses ke berbagai layanan ekspedisi, fitur otomatisasi, pelacakan real-time, dan dashboard yang dirancang untuk mendukung pertumbuhan bisnis.",
     },
     {
-      image: "/images/recommendation.png",
-      title: "Pilihan Kurir Terbaik Ongkir Termurah",
+      icon: <Rocket size={28} />,
+      iconBg: "bg-red-100 text-red-500",
+      title: "Lebih Cepat Mengirim, Lebih Mudah Berkembang",
       description:
-        "Rekomendasi dari AI untuk kurir ekspedisi terbaik khusus pesanan kirim paket kamu agar minim retur.",
+        "Kami menghadirkan platform pengiriman yang membantu bisnis menghemat waktu, menekan biaya operasional, dan meningkatkan pengalaman pelanggan melalui layanan ekspedisi yang terintegrasi.",
     },
     {
-      image: "/images/technical-support.png",
-      title: "Best Partner Support",
+      icon: <Monitor size={28} />,
+      iconBg: "bg-blue-100 text-blue-500",
+      title: "Semua Ekspedisi. Satu Dashboard.",
       description:
-        "24 Jam NON-STOP melayani semua pertanyaan seputar kiriman paket kamu dengan setulus hati.",
+        "Kelola pengiriman, bandingkan ongkir, lacak paket, hingga proses COD dalam satu platform yang cepat, praktis, dan terpercaya.",
+    },
+    {
+      icon: <Handshake size={28} />,
+      iconBg: "bg-orange-100 text-orange-600",
+      title: "Mitra Pengiriman untuk Bisnis Modern",
+      description:
+        "Bhisakirim menghubungkan bisnis Anda dengan berbagai layanan ekspedisi terpercaya melalui platform yang dirancang untuk pengiriman yang lebih cepat, efisien, dan mudah dikelola.",
+    },
+    {
+      icon: <ShieldCheck size={28} />,
+      iconBg: "bg-green-100 text-green-500",
+      title: "Aman & Terpercaya",
+      description:
+        "Keamanan data dan transaksi Anda adalah prioritas kami. Bhisakirim berkomitmen memberikan layanan terpercaya dengan sistem yang aman, stabil, dan selalu dioptimalkan.",
     },
   ];
 
@@ -49,21 +78,17 @@ const Features: React.FC = () => {
     <section id="features" className="section-padding bg-gray-50">
       <div className="container mx-auto px-4 py-10">
         <AnimatedSection delay={100}>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1 bg-blue-200 text-blue-600 rounded-full text-sm font-semibold mb-4">
-              Fitur Unggulan
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-              Solusi Pengiriman yang Dirancang untuk Anda
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+              Bangun Bisnis Tanpa Ribet,
+              <br />
+              Permudah Operasional Bersama{" "}
+              <span className="text-blue-500">bhisakirim</span>
             </h2>
-            <p className="text-lg text-gray-600">
-              Nikmati berbagai fitur unggulan yang memudahkan proses pengiriman
-              paket Anda dari awal hingga akhir.
-            </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <AnimatedSection key={index} delay={150 + index * 50}>
               <motion.div
@@ -72,21 +97,17 @@ const Features: React.FC = () => {
                   boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
                 }}
                 transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                className="bg-white rounded-2xl p-8 shadow-sm card-hover border border-gray-100 h-full cursor-pointer"
+                className="bg-white rounded-2xl p-6 shadow-sm card-hover border border-gray-100 h-full cursor-pointer"
               >
-                <div className="inline-flex items-center justify-center h-16 w-16 rounded-xl bg-blue-100 text-blue-500 mb-6 px-2 py-2">
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    width={64}
-                    height={64}
-                    className="rounded-lg"
-                  />
+                <div
+                  className={`inline-flex items-center justify-center h-14 w-14 rounded-xl mb-6 ${feature.iconBg}`}
+                >
+                  {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                <h3 className="text-lg font-semibold mb-3 text-gray-800">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
               </motion.div>
             </AnimatedSection>
           ))}
