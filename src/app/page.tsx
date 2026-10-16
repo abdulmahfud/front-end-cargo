@@ -7,7 +7,7 @@ import Features from "@/components/Features";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import HeroStats from "@/components/HeroStats";
-import QuickCheckCards from "@/components/QuickCheckCards";
+// import QuickCheckCards from "@/components/QuickCheckCards";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import FloatingWhatsApp from "@/components/FloatingWhatsapp";
@@ -27,19 +27,19 @@ const partnerLogos = [
   "/images/jne.png",
   "/images/pos-indonesia.png",
   "/images/lion.png",
-  "/images/borzo.png",
-  "/images/central-cargo.png",
+  // "/images/borzo.png",
+  // "/images/central-cargo.png",
   "/images/id-express.png",
   "/images/jnt-cargo.png",
   "/images/lion.png",
-  "/images/ncs.png",
+  // "/images/ncs.png",
   "/images/ninja.png",
   "/images/paxel.png",
   "/images/pos.png",
-  "/images/rpx.png",
+  // "/images/rpx.png",
   "/images/sap.png",
   "/images/sicepat.png",
-  "/images/tiki.png",
+  // "/images/tiki.png",
 ];
 
 export default function Home() {
@@ -68,7 +68,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <HeroStats />
-      <QuickCheckCards />
+      {/* <QuickCheckCards /> */}
       <Features />
 
       {/* Partner section */}
@@ -89,26 +89,20 @@ export default function Home() {
           </AnimatedSection>
 
           <AnimatedSection delay={100}>
-            <div className="overflow-hidden py-5 relative">
-              <motion.div
-                className="flex space-x-8"
-                animate={{ x: ["0%", "-100%"] }}
-                transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
-              >
-                {[...partnerLogos, ...partnerLogos].map((logo, i) => (
-                  <div key={i} className="flex justify-center">
-                    <div className="h-16 w-28 bg-gray-100 rounded-lg flex items-center justify-center shadow-sm">
-                      <Image
-                        src={logo}
-                        alt={`Partner ${i + 1}`}
-                        width={75}
-                        height={75}
-                        className="h-12 object-contain"
-                      />
-                    </div>
+            <div className="flex flex-wrap justify-center gap-6 py-5">
+              {partnerLogos.map((logo, i) => (
+                <div key={logo + i} className="flex justify-center">
+                  <div className="h-16 w-28 bg-gray-100 rounded-lg flex items-center justify-center shadow-sm">
+                    <Image
+                      src={logo}
+                      alt={`Partner ${i + 1}`}
+                      width={75}
+                      height={75}
+                      className="h-12 object-contain"
+                    />
                   </div>
-                ))}
-              </motion.div>
+                </div>
+              ))}
             </div>
           </AnimatedSection>
         </div>
