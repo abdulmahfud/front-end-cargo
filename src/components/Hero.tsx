@@ -14,7 +14,6 @@ const Hero: React.FC = () => {
             <div className="max-w-xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight text-balance">
                 Pilih. Kirim.
-                <br />
                 <span className="text-blue-500">Selesai</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8">

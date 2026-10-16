@@ -25,7 +25,6 @@ import Image from "next/image";
 const partnerLogos = [
   "/images/anter-aja.png",
   "/images/jne.png",
-  "/images/pos-indonesia.png",
   "/images/lion.png",
   "/images/id-express.png",
   "/images/jnt-cargo.png",
