@@ -8,6 +8,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  HousePlus,
 } from "lucide-react";
 import Image from 'next/image';
 
@@ -143,7 +144,7 @@ const Footer: React.FC = () => {
               </li> */}
               <li>
                 <a
-                  href="#"
+                  href="/faq"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
                   FAQ
@@ -156,12 +157,21 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold text-lg mb-4 text-blue-500">Kontak</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
+                <HousePlus
+                  size={20}
+                  className="text-blue-500 mr-3 mt-1 flex-shrink-0"
+                />
+                <span className="text-gray-600">
+                PT Nusi Serba Digital
+                </span>
+              </li>
+              <li className="flex items-start">
                 <MapPin
                   size={20}
                   className="text-blue-500 mr-3 mt-1 flex-shrink-0"
                 />
                 <span className="text-gray-600">
-                Jl. Jepara Bangsri KM 7 Wonorejo Kec.Jepara Kab.Jepara
+                Jl. Tubanan PLTU, Tubanan Kec. Kembang Kabupaten. Jepara, Jawa Tengah 59354
                 </span>
               </li>
               <li className="flex items-center">

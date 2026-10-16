@@ -27,19 +27,14 @@ const partnerLogos = [
   "/images/jne.png",
   "/images/pos-indonesia.png",
   "/images/lion.png",
-  // "/images/borzo.png",
-  // "/images/central-cargo.png",
   "/images/id-express.png",
   "/images/jnt-cargo.png",
   "/images/lion.png",
-  // "/images/ncs.png",
   "/images/ninja.png",
   "/images/paxel.png",
   "/images/pos.png",
-  // "/images/rpx.png",
   "/images/sap.png",
   "/images/sicepat.png",
-  // "/images/tiki.png",
 ];
 
 export default function Home() {
@@ -176,19 +171,16 @@ export default function Home() {
       {/* CTA section */}
       <section
         id="contact"
-        className="py-20 relative overflow-hidden bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/bg1.jpeg')" }}
       >
         {/* Overlay Hitam Pekat */}
-        <div className="absolute inset-0 bg-black/50 z-0"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 p-8">
           <AnimatedSection>
             <div className="max-w-3xl mx-auto text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-black">
                 Siap Untuk Memulai?
               </h2>
-              <p className="text-lg mb-10">
+              <p className="text-lg mb-10 text-black">
                 Daftar sekarang dan dapatkan kemudahan dalam mengirim paket ke
                 seluruh Indonesia.
               </p>
