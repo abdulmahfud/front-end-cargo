@@ -30,6 +30,7 @@ const Navbar: React.FC = () => {
     // { name: "Cek Ongkir", href: "/cek-ongkir" },
     // { name: "Cek Resi", href: "/#pricing" },
     { name: "Tentang Kami", href: "/#about" },
+    { name: "Blog", href: "/blog" },
     { name: "Kontak", href: "/#contact" },
   ];
 

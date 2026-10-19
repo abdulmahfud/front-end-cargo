@@ -134,14 +134,14 @@ const Footer: React.FC = () => {
                   Partner Bisnis
                 </a>
               </li>
-              {/* <li>
+              <li>
                 <a
-                  href="#"
+                  href="/blog"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
                   Blog
                 </a>
-              </li> */}
+              </li>
               <li>
                 <a
                   href="/faq"
