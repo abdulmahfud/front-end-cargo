@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import DOMPurify from "isomorphic-dompurify";
 import { ArrowLeft, Calendar, Newspaper, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -109,9 +110,15 @@ export default async function BlogDetailPage({
               </div>
             )}
 
-            <div className="whitespace-pre-line text-base leading-relaxed text-gray-700">
-              {post.content}
-            </div>
+            <div
+              className="prose prose-sm sm:prose-base max-w-none text-gray-700"
+              // content ditulis admin lewat editor WYSIWYG (lihat DA), tapi
+              // endpoint admin tidak men-sanitize HTML-nya - dibersihkan di
+              // sini sebelum dirender sebagai HTML.
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(post.content),
+              }}
+            />
           </AnimatedSection>
         </div>
       </article>
