@@ -42,20 +42,20 @@ const HeroStats: React.FC = () => {
     <section className="relative z-10">
       <div className="container mx-auto px-4">
         <AnimatedSection>
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 px-4 py-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:px-6 sm:py-8 sm:gap-6 md:grid-cols-4 md:gap-8">
             {stats.map((stat, i) => (
-              <div key={i} className="flex items-center gap-4">
+              <div key={i} className="flex items-center gap-3 sm:gap-4">
                 <div
-                  className={`h-14 w-14 rounded-xl flex items-center justify-center flex-shrink-0 ${stat.iconBg}`}
+                  className={`h-11 w-11 rounded-xl flex items-center justify-center flex-shrink-0 sm:h-14 sm:w-14 ${stat.iconBg}`}
                 >
                   {stat.icon}
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500 leading-tight">
+                <div className="min-w-0">
+                  <p className="text-xs text-gray-500 leading-tight sm:text-sm">
                     {stat.label}
                   </p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xl font-bold text-gray-900">
+                  <div className="flex flex-wrap items-center gap-1.5 mt-1 sm:gap-2">
+                    <span className="text-lg font-bold text-gray-900 sm:text-xl">
                       {stat.value}
                     </span>
                     <span

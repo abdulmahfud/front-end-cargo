@@ -193,7 +193,7 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex space-x-6">
             <a
-              href="#"
+              href="/syarat-dan-ketentuan"
               className="text-gray-600 hover:text-blue-500 text-sm transition-colors"
             >
               Syarat & Ketentuan
