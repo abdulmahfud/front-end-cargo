@@ -29,8 +29,8 @@ export default function SyaratDanKetentuanPage() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection delay={100}>
-            <div className="max-w-4xl mx-auto rounded-2xl bg-gray-50 p-6 shadow-sm md:p-10 text-sm prose prose-slate max-w-none">
+          <div className="max-w-4xl mx-auto rounded-2xl bg-gray-50 p-6 shadow-sm md:p-10">
+            <div className="prose prose-slate max-w-none text-sm">
             <h2>A. Pendahuluan</h2>
             <br />
             <p>
@@ -1769,7 +1769,7 @@ export default function SyaratDanKetentuanPage() {
               </li>
             </ul>
             </div>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
 
