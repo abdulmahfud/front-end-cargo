@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 import AnimatedSection from "@/components/AnimatedSection";
 import { FileText } from "lucide-react";
 
@@ -1772,8 +1771,6 @@ export default function SyaratDanKetentuanPage() {
           </div>
         </div>
       </section>
-
-      <FloatingWhatsApp />
       <Footer />
     </div>
   );

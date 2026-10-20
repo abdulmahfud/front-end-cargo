@@ -10,7 +10,6 @@ import HeroStats from "@/components/HeroStats";
 // import QuickCheckCards from "@/components/QuickCheckCards";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 
 import {
   ArrowRight,
@@ -222,8 +221,6 @@ export default function Home() {
           </AnimatedSection>
         </div>
       </section>
-
-      <FloatingWhatsApp />
 
       <Footer />
     </div>

@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Calendar, Newspaper, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getBlogPosts } from "@/lib/blog";
 
@@ -130,8 +129,6 @@ export default async function BlogPage({
           )}
         </div>
       </section>
-
-      <FloatingWhatsApp />
       <Footer />
     </div>
   );

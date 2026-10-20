@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 import AnimatedSection from "@/components/AnimatedSection";
 import {
   Accordion,
@@ -141,8 +140,6 @@ export default function FaqPage() {
           </AnimatedSection>
         </div>
       </section>
-
-      <FloatingWhatsApp />
       <Footer />
     </div>
   );

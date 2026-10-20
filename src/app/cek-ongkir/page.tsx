@@ -6,7 +6,6 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 import Link from "next/link";
 import CheckShippingCost from "@/components/CheckShippingCost/CheckShippingCost";
 import {
@@ -148,7 +147,6 @@ export default function ShippingCost() {
           </AnimatedSection>
         </div>
       </section>
-      <FloatingWhatsApp />
       <Footer />
     </div>
   );

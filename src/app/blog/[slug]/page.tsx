@@ -6,7 +6,6 @@ import DOMPurify from "isomorphic-dompurify";
 import { ArrowLeft, Calendar, Newspaper, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getBlogPost } from "@/lib/blog";
 
@@ -122,8 +121,6 @@ export default async function BlogDetailPage({
           </AnimatedSection>
         </div>
       </article>
-
-      <FloatingWhatsApp />
       <Footer />
     </div>
   );
