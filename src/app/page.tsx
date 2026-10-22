@@ -91,6 +91,7 @@ export default function Home() {
                       alt={`Partner ${i + 1}`}
                       width={75}
                       height={75}
+                      unoptimized
                       className="h-12 object-contain"
                     />
                   </div>
