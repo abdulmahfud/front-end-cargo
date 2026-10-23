@@ -9,6 +9,7 @@ import Hero from "@/components/Hero";
 import HeroStats from "@/components/HeroStats";
 // import QuickCheckCards from "@/components/QuickCheckCards";
 import Navbar from "@/components/Navbar";
+import ServiceCategories from "@/components/ServiceCategories";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -62,6 +63,7 @@ export default function Home() {
       <Hero />
       <HeroStats />
       {/* <QuickCheckCards /> */}
+      <ServiceCategories />
       <Features />
 
       {/* Partner section */}
