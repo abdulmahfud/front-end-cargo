@@ -33,7 +33,7 @@ const categories: ServiceCategory[] = [
       "Tarif lebih hemat",
       "Cocok untuk pengiriman rutin",
     ],
-    image: "/images/paket-reguler.png",
+    image: "/images/box.png",
     buttonLabel: "Cek Pengiriman Reguler",
   },
   {
@@ -49,7 +49,7 @@ const categories: ServiceCategory[] = [
       "Cakupan layanan luas",
       "Cocok untuk kebutuhan mendesak",
     ],
-    image: "/images/paket-instan.png",
+    image: "/images/bike.png",
     buttonLabel: "Cek Pengiriman Instan",
   },
   {
@@ -65,7 +65,7 @@ const categories: ServiceCategory[] = [
       "Beragam pilihan ekspedisi kargo",
       "Sesuai untuk kebutuhan bisnis",
     ],
-    image: "/images/paket-cargo.png",
+    image: "/images/forklift.png",
     buttonLabel: "Cek Pengiriman Cargo",
   },
   {
@@ -81,7 +81,7 @@ const categories: ServiceCategory[] = [
       "Cakupan banyak negara",
       "Informasi dokumen dan ketentuan",
     ],
-    image: "/images/paket-internasional.png",
+    image: "/images/airplane.png",
     buttonLabel: "Cek Pengiriman Internasional",
   },
 ];
