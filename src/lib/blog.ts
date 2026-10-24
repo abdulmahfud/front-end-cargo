@@ -54,28 +54,45 @@ export interface BlogPostPage {
 
 /** GET /public/posts?page= — cache 15 menit di BE, ikut di-revalidate di sini. */
 export async function getBlogPosts(page = 1): Promise<BlogPostPage> {
-  const res = await fetch(`${API_URL}/public/posts?page=${page}`, {
-    next: { revalidate: 900 },
-  });
-  if (!res.ok) {
-    return { posts: [], currentPage: 1, lastPage: 1, total: 0 };
+  const empty = { posts: [], currentPage: 1, lastPage: 1, total: 0 };
+  try {
+    const res = await fetch(`${API_URL}/public/posts?page=${page}`, {
+      next: { revalidate: 900 },
+    });
+    if (!res.ok) return empty;
+    const json: PostListApiResponse = await res.json();
+    return {
+      posts: json.data?.data ?? [],
+      currentPage: json.data?.current_page ?? 1,
+      lastPage: json.data?.last_page ?? 1,
+      total: json.data?.total ?? 0,
+    };
+  } catch (err) {
+    // Fetch gagal total (network) atau respons bukan JSON valid (mis. WAF/
+    // proxy menyisipkan halaman HTML) - jangan biarkan ini menjatuhkan
+    // seluruh server component jadi error 500, cukup tampilkan kosong.
+    console.error("getBlogPosts failed:", err);
+    return empty;
   }
-  const json: PostListApiResponse = await res.json();
-  return {
-    posts: json.data?.data ?? [],
-    currentPage: json.data?.current_page ?? 1,
-    lastPage: json.data?.last_page ?? 1,
-    total: json.data?.total ?? 0,
-  };
 }
 
 /** GET /public/posts/{slug} — cache 30 menit di BE. Null kalau tidak ditemukan. */
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const res = await fetch(
-    `${API_URL}/public/posts/${encodeURIComponent(slug)}`,
-    { next: { revalidate: 1800 } }
-  );
-  if (!res.ok) return null;
-  const json: PostDetailApiResponse = await res.json();
-  return json.success ? json.data : null;
+  try {
+    const res = await fetch(
+      `${API_URL}/public/posts/${encodeURIComponent(slug)}`,
+      { next: { revalidate: 1800 } }
+    );
+    if (!res.ok) return null;
+    const json: PostDetailApiResponse = await res.json();
+    return json.success ? json.data : null;
+  } catch (err) {
+    // Sama seperti getBlogPosts() - kegagalan di sini sebelumnya tidak
+    // tertangkap dan menjatuhkan halaman detail blog jadi error 500 (lihat
+    // laporan: /blog/{slug} selalu 500 di production meski BE sehat dan
+    // build lokal normal). Dengan try/catch, kegagalan apa pun berujung ke
+    // notFound() (404 biasa) di halaman, bukan crash.
+    console.error(`getBlogPost(${slug}) failed:`, err);
+    return null;
+  }
 }
