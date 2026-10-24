@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                   href="#"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
-                  Regular Delivery
+                  Pengiriman Paket Reguler
                 </a>
               </li>
               <li>
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
                   href="#"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
-                  Express Delivery
+                  Pengiriman Paket Instan
                 </a>
               </li>
               <li>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                   href="#"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
-                  Same Day Delivery
+                  Pengiriman Paket Cargo
                 </a>
               </li>
               <li>
@@ -91,15 +91,7 @@ const Footer: React.FC = () => {
                   href="#"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
-                  International Shipping
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
-                >
-                  Cargo Service
+                  Pengiriman Paket Internasional
                 </a>
               </li>
             </ul>
