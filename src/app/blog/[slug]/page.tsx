@@ -9,6 +9,20 @@ import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getBlogPost } from "@/lib/blog";
 
+/**
+ * isomorphic-dompurify pakai jsdom di bawahnya - kalau ini gagal di runtime
+ * serverless tertentu, jangan jatuhkan seluruh halaman jadi 500, cukup
+ * jangan render kontennya (judul, gambar, dll tetap tampil).
+ */
+function sanitizeContent(html: string): string {
+  try {
+    return DOMPurify.sanitize(html);
+  } catch (err) {
+    console.error("DOMPurify.sanitize failed:", err);
+    return "";
+  }
+}
+
 function formatDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
@@ -19,26 +33,40 @@ function formatDate(iso: string): string {
   });
 }
 
+const FALLBACK_METADATA: Metadata = { title: "Blog — BhisaKirim" };
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getBlogPost(slug);
-  if (!post) return { title: "Artikel tidak ditemukan — BhisaKirim" };
+  // generateMetadata() berjalan terpisah dari komponen halaman di bawah -
+  // kegagalan di sini (sebelum ini tidak dibungkus apa pun) menjatuhkan
+  // SELURUH route jadi error 500, bahkan untuk slug yang valid maupun yang
+  // tidak ada sama sekali (lihat laporan: /blog/{slug} selalu 500 di
+  // production meski notFound() di komponen halaman tidak pernah tersentuh
+  // untuk kasus itu). /blog (list) tidak kena karena pakai `export const
+  // metadata` statis, bukan generateMetadata() async seperti di sini.
+  try {
+    const { slug } = await params;
+    const post = await getBlogPost(slug);
+    if (!post) return { title: "Artikel tidak ditemukan — BhisaKirim" };
 
-  const description = post.content.slice(0, 160);
-  return {
-    title: `${post.title} — Blog BhisaKirim`,
-    description,
-    openGraph: {
-      title: post.title,
+    const description = post.content.slice(0, 160);
+    return {
+      title: `${post.title} — Blog BhisaKirim`,
       description,
-      images: post.image_url ? [{ url: post.image_url }] : undefined,
-      type: "article",
-    },
-  };
+      openGraph: {
+        title: post.title,
+        description,
+        images: post.image_url ? [{ url: post.image_url }] : undefined,
+        type: "article",
+      },
+    };
+  } catch (err) {
+    console.error("generateMetadata(/blog/[slug]) failed:", err);
+    return FALLBACK_METADATA;
+  }
 }
 
 export default async function BlogDetailPage({
@@ -115,7 +143,7 @@ export default async function BlogDetailPage({
               // endpoint admin tidak men-sanitize HTML-nya - dibersihkan di
               // sini sebelum dirender sebagai HTML.
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(post.content),
+                __html: sanitizeContent(post.content),
               }}
             />
           </AnimatedSection>
