@@ -52,12 +52,20 @@ export interface BlogPostPage {
   total: number;
 }
 
-/** GET /public/posts?page= — cache 15 menit di BE, ikut di-revalidate di sini. */
+/**
+ * GET /public/posts?page= — BE sendiri sudah cache 15 menit dan membersihkan
+ * cache-nya setiap kali admin menyimpan/menghapus artikel (lihat
+ * PostController::clearPublicPostsCache() di api-bhisakirim), jadi fetch di
+ * sini cukup cache pendek (60 detik) - cuma meredam burst trafik, bukan
+ * sumber utama staleness. Sebelumnya 15 menit di sini DIGABUNG dengan cache
+ * BE yang (saat itu) tidak pernah dibersihkan, jadi artikel yang baru
+ * dihapus masih muncul di FE sampai 15-30 menit kemudian.
+ */
 export async function getBlogPosts(page = 1): Promise<BlogPostPage> {
   const empty = { posts: [], currentPage: 1, lastPage: 1, total: 0 };
   try {
     const res = await fetch(`${API_URL}/public/posts?page=${page}`, {
-      next: { revalidate: 900 },
+      next: { revalidate: 60 },
     });
     if (!res.ok) return empty;
     const json: PostListApiResponse = await res.json();
@@ -76,12 +84,16 @@ export async function getBlogPosts(page = 1): Promise<BlogPostPage> {
   }
 }
 
-/** GET /public/posts/{slug} — cache 30 menit di BE. Null kalau tidak ditemukan. */
+/**
+ * GET /public/posts/{slug} — sama seperti getBlogPosts(), BE sudah
+ * membersihkan cache-nya sendiri saat artikel diubah/dihapus, jadi cukup
+ * cache pendek di sini. Null kalau tidak ditemukan.
+ */
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const res = await fetch(
       `${API_URL}/public/posts/${encodeURIComponent(slug)}`,
-      { next: { revalidate: 1800 } }
+      { next: { revalidate: 60 } }
     );
     if (!res.ok) return null;
     const json: PostDetailApiResponse = await res.json();
