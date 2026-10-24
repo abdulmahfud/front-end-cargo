@@ -54,6 +54,11 @@ function formatDate(iso: string): string {
 
 const FALLBACK_METADATA: Metadata = { title: "Blog — BhisaKirim" };
 
+// force-dynamic: sama seperti di app/blog/page.tsx - pastikan halaman ini
+// selalu di-render ulang di server, termasuk lewat navigasi <Link>
+// client-side, bukan hanya cache: "no-store" di getBlogPost() saja.
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {

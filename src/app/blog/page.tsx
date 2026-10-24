@@ -13,6 +13,14 @@ export const metadata: Metadata = {
     "Tips pengiriman, kabar seputar ekspedisi, dan info terbaru dari BhisaKirim.",
 };
 
+// force-dynamic: pastikan halaman ini SELALU di-render ulang di server tiap
+// dibuka (termasuk lewat navigasi <Link> client-side, bukan cuma full page
+// reload) - getBlogPosts() sendiri sudah cache: "no-store", tapi tanpa ini
+// Next.js App Router masih bisa menganggap route-nya layak masuk Full Route
+// Cache/Router Cache di sisi client. force-dynamic menghilangkan kemungkinan
+// itu sepenuhnya, jadi artikel baru selalu langsung kelihatan begitu dibuka.
+export const dynamic = "force-dynamic";
+
 function formatDate(iso: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return "";
