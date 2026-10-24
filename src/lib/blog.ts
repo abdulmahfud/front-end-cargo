@@ -53,19 +53,23 @@ export interface BlogPostPage {
 }
 
 /**
- * GET /public/posts?page= — BE sendiri sudah cache 15 menit dan membersihkan
- * cache-nya setiap kali admin menyimpan/menghapus artikel (lihat
- * PostController::clearPublicPostsCache() di api-bhisakirim), jadi fetch di
- * sini cukup cache pendek (60 detik) - cuma meredam burst trafik, bukan
- * sumber utama staleness. Sebelumnya 15 menit di sini DIGABUNG dengan cache
- * BE yang (saat itu) tidak pernah dibersihkan, jadi artikel yang baru
- * dihapus masih muncul di FE sampai 15-30 menit kemudian.
+ * GET /public/posts?page= — BE sendiri sudah cache & membersihkan cache-nya
+ * sendiri tiap kali admin menyimpan/mengubah/menghapus artikel (lihat
+ * PostController::clearPublicPostsCache() di api-bhisakirim), jadi BE sudah
+ * jadi satu-satunya sumber kebenaran soal cache. fetch() di sini sengaja
+ * cache: "no-store" (tidak pakai next.revalidate sama sekali) - sebelumnya
+ * pernah pakai revalidate 15-30 menit lalu diperpendek ke 60 detik, tapi
+ * Vercel/Next.js Data Cache tidak otomatis memperpendek entri yang SUDAH
+ * ke-cache dari sebelum perubahan kode (TTL lama tetap berlaku sampai
+ * habis sendiri) - akibatnya artikel baru/terhapus bisa tidak kelihatan
+ * konsisten tergantung kapan cache lama ditulis. Request langsung ke BE di
+ * sini ringan karena BE sendiri sudah cepat (baca dari tabel `cache`).
  */
 export async function getBlogPosts(page = 1): Promise<BlogPostPage> {
   const empty = { posts: [], currentPage: 1, lastPage: 1, total: 0 };
   try {
     const res = await fetch(`${API_URL}/public/posts?page=${page}`, {
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
     if (!res.ok) return empty;
     const json: PostListApiResponse = await res.json();
@@ -85,15 +89,15 @@ export async function getBlogPosts(page = 1): Promise<BlogPostPage> {
 }
 
 /**
- * GET /public/posts/{slug} — sama seperti getBlogPosts(), BE sudah
- * membersihkan cache-nya sendiri saat artikel diubah/dihapus, jadi cukup
- * cache pendek di sini. Null kalau tidak ditemukan.
+ * GET /public/posts/{slug} — sama seperti getBlogPosts(), no-store, BE
+ * adalah satu-satunya sumber kebenaran soal cache. Null kalau tidak
+ * ditemukan.
  */
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
     const res = await fetch(
       `${API_URL}/public/posts/${encodeURIComponent(slug)}`,
-      { next: { revalidate: 60 } }
+      { cache: "no-store" }
     );
     if (!res.ok) return null;
     const json: PostDetailApiResponse = await res.json();
