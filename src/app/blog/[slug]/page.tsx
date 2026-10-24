@@ -2,23 +2,42 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import DOMPurify from "isomorphic-dompurify";
+import sanitizeHtml from "sanitize-html";
 import { ArrowLeft, Calendar, Newspaper, Tag, User } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getBlogPost } from "@/lib/blog";
 
+// Sebelumnya pakai isomorphic-dompurify (butuh jsdom) - itu akar penyebab
+// /blog/[slug] SELALU 500 di production (bahkan untuk slug yang tidak ada
+// sama sekali, karena modulnya di-import statis di atas sehingga gagal
+// saat inisialisasi, sebelum kode apa pun di file ini sempat jalan - try/
+// catch di sekitar pemanggilannya tidak membantu). sanitize-html murni JS
+// tanpa emulasi DOM, aman di runtime serverless.
+const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
+  allowedTags: [
+    "p", "br", "strong", "b", "em", "i", "u", "s", "strike",
+    "a", "ul", "ol", "li", "blockquote",
+    "h1", "h2", "h3", "h4", "h5", "h6",
+    "img", "span", "div",
+  ],
+  allowedAttributes: {
+    a: ["href", "target", "rel"],
+    img: ["src", "alt", "width", "height"],
+  },
+};
+
 /**
- * isomorphic-dompurify pakai jsdom di bawahnya - kalau ini gagal di runtime
- * serverless tertentu, jangan jatuhkan seluruh halaman jadi 500, cukup
- * jangan render kontennya (judul, gambar, dll tetap tampil).
+ * content ditulis admin lewat editor WYSIWYG (lihat DA), tapi endpoint
+ * admin tidak men-sanitize HTML-nya - dibersihkan di sini sebelum
+ * dirender sebagai HTML.
  */
 function sanitizeContent(html: string): string {
   try {
-    return DOMPurify.sanitize(html);
+    return sanitizeHtml(html, SANITIZE_OPTIONS);
   } catch (err) {
-    console.error("DOMPurify.sanitize failed:", err);
+    console.error("sanitizeHtml failed:", err);
     return "";
   }
 }
@@ -139,9 +158,6 @@ export default async function BlogDetailPage({
 
             <div
               className="prose prose-sm sm:prose-base max-w-none text-gray-700"
-              // content ditulis admin lewat editor WYSIWYG (lihat DA), tapi
-              // endpoint admin tidak men-sanitize HTML-nya - dibersihkan di
-              // sini sebelum dirender sebagai HTML.
               dangerouslySetInnerHTML={{
                 __html: sanitizeContent(post.content),
               }}
