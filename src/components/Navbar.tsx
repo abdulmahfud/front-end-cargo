@@ -3,9 +3,24 @@ import React, { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
 import { Menu, X, CircleCheckBig } from "lucide-react";
 import { Button } from "../components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../components/ui/accordion";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "../components/ui/navigation-menu";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { serviceCategories } from "@/lib/serviceCategories";
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,15 +74,60 @@ const Navbar: React.FC = () => {
         </div>
         <div>
           <nav className="items-center hidden space-x-6 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="font-medium text-gray-700 transition-colors duration-200 hover:text-blue-500"
-              >
-                {link.name}
-              </Link>
-            ))}
+            <Link
+              href="/"
+              className="font-medium text-gray-700 transition-colors duration-200 hover:text-blue-500"
+            >
+              Beranda
+            </Link>
+
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="h-auto bg-transparent p-0 font-medium text-gray-700 hover:bg-transparent hover:text-blue-500 focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-blue-500">
+                    Layanan
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[300px] gap-1 p-3">
+                      {serviceCategories.map((category) => {
+                        const Icon = category.icon;
+                        return (
+                          <li key={category.slug}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={`/layanan/${category.slug}`}
+                                className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-gray-50"
+                              >
+                                <span
+                                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${category.iconBg}`}
+                                >
+                                  <Icon className="h-4 w-4" />
+                                </span>
+                                <span className="text-sm font-medium text-gray-700">
+                                  {category.title}
+                                </span>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            {navLinks
+              .filter((link) => link.name !== "Beranda")
+              .map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="font-medium text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                >
+                  {link.name}
+                </Link>
+              ))}
           </nav>
         </div>
         <div className="items-center hidden space-x-4 md:flex">
@@ -113,21 +173,61 @@ const Navbar: React.FC = () => {
       {/* Mobile menu */}
       <div
         className={cn(
-          "md:hidden fixed inset-x-0 bg-white shadow-lg transition-all duration-300 ease-in-out",
-          isMenuOpen ? "top-[60px] opacity-100" : "-top-[450px] opacity-0"
+          "md:hidden fixed inset-x-0 bg-white shadow-lg transition-all duration-300 ease-in-out max-h-[calc(100vh-60px)] overflow-y-auto",
+          isMenuOpen ? "top-[60px] opacity-100" : "-top-[700px] opacity-0"
         )}
       >
-        <div className="container flex flex-col px-4 py-5 mx-auto space-y-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="py-2 font-medium text-gray-700 hover:text-blue-500"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+        <div className="container flex flex-col px-4 py-5 mx-auto space-y-1">
+          <Link
+            href="/"
+            className="py-2 font-medium text-gray-700 hover:text-blue-500"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Beranda
+          </Link>
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="layanan" className="border-none">
+              <AccordionTrigger className="py-2 font-medium text-gray-700 hover:text-blue-500 hover:no-underline">
+                Layanan
+              </AccordionTrigger>
+              <AccordionContent className="pb-2 pl-3">
+                <div className="flex flex-col space-y-1">
+                  {serviceCategories.map((category) => {
+                    const Icon = category.icon;
+                    return (
+                      <Link
+                        key={category.slug}
+                        href={`/layanan/${category.slug}`}
+                        className="flex items-center gap-2.5 py-1.5 text-sm text-gray-600 hover:text-blue-500"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <span
+                          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md ${category.iconBg}`}
+                        >
+                          <Icon className="h-3.5 w-3.5" />
+                        </span>
+                        {category.title}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          {navLinks
+            .filter((link) => link.name !== "Beranda")
+            .map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="py-2 font-medium text-gray-700 hover:text-blue-500"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
           <div className="flex flex-col pt-3 space-y-3">
             <a
               href="https://panel.bhisakirim.com/"

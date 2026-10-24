@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#"
+                  href="/layanan/reguler"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
                   Pengiriman Paket Reguler
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/layanan/instan"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
                   Pengiriman Paket Instan
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/layanan/cargo"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
                   Pengiriman Paket Cargo
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/layanan/internasional"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
                 >
                   Pengiriman Paket Internasional

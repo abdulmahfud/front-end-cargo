@@ -1,90 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Boxes, Check, Globe, Package, Zap } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import { Button } from "@/components/ui/button";
-
-interface ServiceCategory {
-  icon: LucideIcon;
-  iconBg: string;
-  checkColor: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  checklist: string[];
-  // Placeholder - ganti dengan gambar ilustrasi asli di /public/images.
-  image: string;
-  buttonLabel: string;
-}
-
-const categories: ServiceCategory[] = [
-  {
-    icon: Package,
-    iconBg: "bg-amber-100 text-amber-500",
-    checkColor: "bg-amber-500",
-    title: "Pengiriman Paket Reguler",
-    subtitle: "Praktis untuk kebutuhan sehari-hari",
-    description:
-      "Kirim paket dengan aman dan ekonomis dengan pilihan layanan reguler dari berbagai ekspedisi. Cocok untuk kebutuhan personal maupun bisnis.",
-    checklist: [
-      "Pilihan ekspedisi beragam",
-      "Tarif lebih hemat",
-      "Cocok untuk pengiriman rutin",
-    ],
-    image: "/images/box.png",
-    buttonLabel: "Cek Pengiriman Reguler",
-  },
-  {
-    icon: Zap,
-    iconBg: "bg-blue-100 text-blue-500",
-    checkColor: "bg-blue-500",
-    title: "Pengiriman Paket Instan",
-    subtitle: "Untuk kebutuhan yang mendesak",
-    description:
-      "Saat waktu menjadi prioritas, pilih layanan instan yang tersedia di wilayah Anda. Pengiriman lebih cepat dengan proses yang praktis.",
-    checklist: [
-      "Proses pengiriman lebih cepat",
-      "Cakupan layanan luas",
-      "Cocok untuk kebutuhan mendesak",
-    ],
-    image: "/images/bike.png",
-    buttonLabel: "Cek Pengiriman Instan",
-  },
-  {
-    icon: Boxes,
-    iconBg: "bg-purple-100 text-purple-500",
-    checkColor: "bg-purple-500",
-    title: "Pengiriman Paket Cargo",
-    subtitle: "Untuk barang berat dan berukuran besar",
-    description:
-      "Kirim barang dalam jumlah besar atau berat dengan pilihan layanan kargo yang tersedia. Solusi tepat untuk kebutuhan bisnis Anda.",
-    checklist: [
-      "Mendukung pengiriman barang besar",
-      "Beragam pilihan ekspedisi kargo",
-      "Sesuai untuk kebutuhan bisnis",
-    ],
-    image: "/images/forklift.png",
-    buttonLabel: "Cek Pengiriman Cargo",
-  },
-  {
-    icon: Globe,
-    iconBg: "bg-green-100 text-green-500",
-    checkColor: "bg-green-500",
-    title: "Pengiriman Paket Internasional",
-    subtitle: "Jangkau tujuan ke luar negeri",
-    description:
-      "Kirim paket ke berbagai negara dengan pilihan layanan internasional yang tersedia. Perhatikan persyaratan dokumen dan ketentuan negara tujuan.",
-    checklist: [
-      "Pilihan ekspedisi internasional",
-      "Cakupan banyak negara",
-      "Informasi dokumen dan ketentuan",
-    ],
-    image: "/images/airplane.png",
-    buttonLabel: "Cek Pengiriman Internasional",
-  },
-];
+import { serviceCategories as categories } from "@/lib/serviceCategories";
 
 export default function ServiceCategories() {
   return (
@@ -111,7 +32,7 @@ export default function ServiceCategories() {
           {categories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <AnimatedSection key={category.title} delay={100 + index * 50}>
+              <AnimatedSection key={category.slug} delay={100 + index * 50}>
                 <div className="flex h-full flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
                   <div
                     className={`mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl ${category.iconBg}`}
@@ -120,7 +41,12 @@ export default function ServiceCategories() {
                   </div>
 
                   <h3 className="text-lg font-semibold text-gray-800">
-                    {category.title}
+                    <Link
+                      href={`/layanan/${category.slug}`}
+                      className="hover:text-blue-500"
+                    >
+                      {category.title}
+                    </Link>
                   </h3>
                   <p className="mb-4 text-sm text-gray-500">
                     {category.subtitle}
