@@ -98,7 +98,18 @@ const Navbar: React.FC = () => {
               Beranda
             </Link>
 
-            <NavigationMenu>
+            {/* flex-none: NavigationMenu bawaan pakai flex-1 + justify-center,
+                jadi dia "menyedot" sisa ruang di baris nav ini lalu
+                menengahkan trigger-nya di situ - bikin jarak ke item
+                tetangga jadi tidak presisi dibanding Link biasa yang cuma
+                selebar kontennya. flex-none menyamakan perilakunya dengan
+                Link lain supaya spasi antar menu rata (space-x-6 di <nav>
+                berlaku sama ke semua item). Layanan & Blog juga sengaja
+                dipisah jadi dua NavigationMenu sendiri-sendiri (bukan satu
+                NavigationMenuList berisi dua trigger) supaya jarak Layanan-
+                Blog ikut space-x-6 yang sama, bukan space-x-1 bawaan
+                NavigationMenuList. */}
+            <NavigationMenu className="flex-none">
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="h-auto bg-transparent p-0 font-medium text-gray-700 hover:bg-transparent hover:text-blue-500 focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-blue-500">
@@ -131,7 +142,11 @@ const Navbar: React.FC = () => {
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
 
+            <NavigationMenu className="flex-none">
+              <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="h-auto bg-transparent p-0 font-medium text-gray-700 hover:bg-transparent hover:text-blue-500 focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-blue-500">
                     Blog
