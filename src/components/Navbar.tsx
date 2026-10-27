@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
-import { Menu, X, CircleCheckBig } from "lucide-react";
+import { Menu, X, CircleCheckBig, Newspaper, BookOpen } from "lucide-react";
 import { Button } from "../components/ui/button";
 import {
   Accordion,
@@ -45,8 +45,25 @@ const Navbar: React.FC = () => {
     // { name: "Cek Ongkir", href: "/cek-ongkir" },
     // { name: "Cek Resi", href: "/#pricing" },
     { name: "Tentang Kami", href: "/#about" },
-    { name: "Blog", href: "/blog" },
     { name: "Kontak", href: "/#contact" },
+  ];
+
+  // Sub menu Blog: "Update Terkini" (semua kategori post kecuali Panduan)
+  // dan "Panduan" (khusus kategori "panduan") - lihat app/blog/page.tsx dan
+  // app/blog/panduan/page.tsx.
+  const blogSubMenu = [
+    {
+      name: "Update Terkini",
+      href: "/blog",
+      icon: Newspaper,
+      iconBg: "bg-blue-100 text-blue-500",
+    },
+    {
+      name: "Panduan",
+      href: "/blog/panduan",
+      icon: BookOpen,
+      iconBg: "bg-amber-100 text-amber-500",
+    },
   ];
 
   return (
@@ -105,6 +122,38 @@ const Navbar: React.FC = () => {
                                 </span>
                                 <span className="text-sm font-medium text-gray-700">
                                   {category.title}
+                                </span>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="h-auto bg-transparent p-0 font-medium text-gray-700 hover:bg-transparent hover:text-blue-500 focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-blue-500">
+                    Blog
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[220px] gap-1 p-3">
+                      {blogSubMenu.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <li key={item.href}>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={item.href}
+                                className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-gray-50"
+                              >
+                                <span
+                                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${item.iconBg}`}
+                                >
+                                  <Icon className="h-4 w-4" />
+                                </span>
+                                <span className="text-sm font-medium text-gray-700">
+                                  {item.name}
                                 </span>
                               </Link>
                             </NavigationMenuLink>
@@ -208,6 +257,36 @@ const Navbar: React.FC = () => {
                           <Icon className="h-3.5 w-3.5" />
                         </span>
                         {category.title}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          <Accordion type="single" collapsible>
+            <AccordionItem value="blog" className="border-none">
+              <AccordionTrigger className="py-2 font-medium text-gray-700 hover:text-blue-500 hover:no-underline">
+                Blog
+              </AccordionTrigger>
+              <AccordionContent className="pb-2 pl-3">
+                <div className="flex flex-col space-y-1">
+                  {blogSubMenu.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="flex items-center gap-2.5 py-1.5 text-sm text-gray-600 hover:text-blue-500"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <span
+                          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md ${item.iconBg}`}
+                        >
+                          <Icon className="h-3.5 w-3.5" />
+                        </span>
+                        {item.name}
                       </Link>
                     );
                   })}

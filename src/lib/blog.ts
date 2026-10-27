@@ -65,10 +65,25 @@ export interface BlogPostPage {
  * konsisten tergantung kapan cache lama ditulis. Request langsung ke BE di
  * sini ringan karena BE sendiri sudah cepat (baca dari tabel `cache`).
  */
-export async function getBlogPosts(page = 1): Promise<BlogPostPage> {
+export interface GetBlogPostsOptions {
+  /** Hanya kategori dengan slug ini (mis. "panduan" untuk menu Panduan). */
+  category?: string;
+  /** Semua kategori KECUALI slug ini (mis. "panduan" untuk menu Update Terkini). */
+  excludeCategory?: string;
+}
+
+export async function getBlogPosts(
+  page = 1,
+  options: GetBlogPostsOptions = {}
+): Promise<BlogPostPage> {
   const empty = { posts: [], currentPage: 1, lastPage: 1, total: 0 };
   try {
-    const res = await fetch(`${API_URL}/public/posts?page=${page}`, {
+    const params = new URLSearchParams({ page: String(page) });
+    if (options.category) params.set("category", options.category);
+    if (options.excludeCategory)
+      params.set("exclude_category", options.excludeCategory);
+
+    const res = await fetch(`${API_URL}/public/posts?${params.toString()}`, {
       cache: "no-store",
     });
     if (!res.ok) return empty;
