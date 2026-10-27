@@ -139,16 +139,16 @@ export default async function BlogDetailPage({
               Kembali ke Blog
             </Link>
 
+            <h1 className="mb-3 text-3xl font-bold text-gray-800 md:text-4xl">
+              {post.title}
+            </h1>
+
             {post.category && (
               <span className="mb-4 inline-flex w-fit items-center gap-1 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-600">
                 <Tag className="h-3 w-3" />
                 {post.category.name}
               </span>
             )}
-
-            <h1 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-              {post.title}
-            </h1>
 
             <div className="mb-8 flex flex-wrap items-center gap-4 text-sm text-gray-400">
               {post.user && (

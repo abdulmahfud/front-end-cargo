@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedSection from "@/components/AnimatedSection";
 import BlogPostGrid from "@/components/BlogPostGrid";
+import FaqSection from "@/components/FaqSection";
 import { getBlogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -58,6 +59,10 @@ export default async function PanduanPage({
             basePath="/blog/panduan"
             emptyMessage="Belum ada panduan."
           />
+
+          <div className="mx-auto mt-20 max-w-3xl border-t border-gray-100 pt-16">
+            <FaqSection />
+          </div>
         </div>
       </section>
       <Footer />
