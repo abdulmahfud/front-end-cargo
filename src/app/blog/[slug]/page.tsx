@@ -24,7 +24,26 @@ const SANITIZE_OPTIONS: sanitizeHtml.IOptions = {
   ],
   allowedAttributes: {
     a: ["href", "target", "rel"],
-    img: ["src", "alt", "width", "height"],
+    // style wajib diizinkan di sini - editor TipTap (DA) menyimpan ukuran
+    // & perataan gambar sebagai style inline (width/float/margin/display),
+    // lihat ResizableImage di RichTextEditor.tsx. allowedStyles di bawah
+    // membatasi hanya properti itu yang lolos, bukan style apa pun.
+    img: ["src", "alt", "width", "height", "style"],
+  },
+  allowedStyles: {
+    img: {
+      width: [/^\d+(\.\d+)?(%|px)$/],
+      float: [/^(left|right)$/],
+      display: [/^block$/],
+      // 4 nilai margin (top right bottom left) - tiap nilai boleh "0" polos
+      // atau angka+satuan (match persis string yang dihasilkan ResizableImage
+      // di RichTextEditor.tsx, mis. "0 1rem 1rem 0").
+      margin: [
+        /^(0|[\d.]+(px|rem|em))(\s+(0|[\d.]+(px|rem|em))){3}$/,
+      ],
+      "margin-left": [/^(auto|[\d.]+(px|rem|em))$/],
+      "margin-right": [/^(auto|[\d.]+(px|rem|em))$/],
+    },
   },
 };
 
