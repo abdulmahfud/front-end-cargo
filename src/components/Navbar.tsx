@@ -145,6 +145,19 @@ const Navbar: React.FC = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
+            {navLinks
+              .filter((link) => !["Beranda", "Kontak"].includes(link.name))
+              .map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="font-medium text-gray-700 transition-colors duration-200 hover:text-blue-500"
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+            {/* Blog ditaruh persis sebelum Kontak. */}
             <NavigationMenu className="flex-none">
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -182,7 +195,7 @@ const Navbar: React.FC = () => {
             </NavigationMenu>
 
             {navLinks
-              .filter((link) => link.name !== "Beranda")
+              .filter((link) => link.name === "Kontak")
               .map((link) => (
                 <Link
                   key={link.name}
@@ -280,6 +293,20 @@ const Navbar: React.FC = () => {
             </AccordionItem>
           </Accordion>
 
+          {navLinks
+            .filter((link) => !["Beranda", "Kontak"].includes(link.name))
+            .map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="py-2 font-medium text-gray-700 hover:text-blue-500"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+
+          {/* Blog ditaruh persis sebelum Kontak. */}
           <Accordion type="single" collapsible>
             <AccordionItem value="blog" className="border-none">
               <AccordionTrigger className="py-2 font-medium text-gray-700 hover:text-blue-500 hover:no-underline">
@@ -311,7 +338,7 @@ const Navbar: React.FC = () => {
           </Accordion>
 
           {navLinks
-            .filter((link) => link.name !== "Beranda")
+            .filter((link) => link.name === "Kontak")
             .map((link) => (
               <Link
                 key={link.name}
